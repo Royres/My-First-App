@@ -26,7 +26,6 @@ export class UsersCardComponent {
   @Input({ required: true }) user!: User;
   @Output() removeUser = new EventEmitter<number>();
 
-
   deleteUser(id: number) {
     this.removeUser.emit(id);
   }
