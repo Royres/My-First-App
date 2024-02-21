@@ -1,5 +1,4 @@
 import { Component, EventEmitter, inject, Input, Output } from "@angular/core";
-import { UsersService } from "../../services/users.service";
 import { User } from "../../interfaces/users.interface";
 import { MatCard, MatCardContent } from "@angular/material/card";
 import { MatButton } from "@angular/material/button";
@@ -23,9 +22,8 @@ import { editUser } from "../../+state/users.actions";
 })
 export class UsersCardComponent {
   private store = inject(Store);
-  private usersService = inject(UsersService);
   private usersModalService = inject(UsersModalService);
-  @Input() user!: User;
+  @Input({ required: true }) user!: User;
   @Output() removeUser = new EventEmitter<number>();
 
 
@@ -40,7 +38,6 @@ export class UsersCardComponent {
             if (!editedUser) {
               return;
             }
-            this.usersService.editUser(editedUser)
             this.store.dispatch(editUser({ editedUser }))})
       )
       .subscribe()

@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { Observable, shareReplay } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from "../interfaces/users.interface";
 import { API_URL } from "../http/api-url.token";
 
@@ -14,6 +14,6 @@ export class UsersApiService {
   }
 
   public getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiUrl}/users`).pipe(shareReplay());
+    return this.http.get<User[]>(`${this.apiUrl}/users`);
   }
 }

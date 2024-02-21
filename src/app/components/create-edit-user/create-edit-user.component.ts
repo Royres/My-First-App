@@ -41,12 +41,12 @@ export class CreateEditUserComponent {
               private readonly dialogRef: MatDialogRef<CreateEditUserComponent>,
               private readonly formService: UsersFormService) {}
 
-   closes(){
+  closes(){
      if (this.form.valid) {
        this.dialogRef.close({
          ...this.form.value,
        })} else {
        return
      }
-   }
+  }
 }
