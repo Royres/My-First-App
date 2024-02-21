@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { CreateEditUserComponent } from "../components/create-user/create-edit-user.component";
+import { CreateEditUserComponent } from "../components/create-edit-user/create-edit-user.component";
 import { User } from "../interfaces/users.interface";
 import { Observable } from "rxjs";
 

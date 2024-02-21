@@ -4,7 +4,7 @@ import { UsersCardComponent } from "../users-card/users-card.component";
 import { CommonModule } from "@angular/common";
 import { MatButton } from "@angular/material/button";
 import { MatDialogActions } from "@angular/material/dialog";
-import { CreateEditUserComponent } from "../create-user/create-edit-user.component";
+import { CreateEditUserComponent } from "../create-edit-user/create-edit-user.component";
 import { User } from "../../interfaces/users.interface";
 import { tap } from "rxjs";
 import { UsersModalService } from "../../services/users-modal.service";
