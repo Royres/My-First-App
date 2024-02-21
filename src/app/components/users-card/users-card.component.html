@@ -1,0 +1,16 @@
+<mat-card class="user-card">
+  <mat-card-content>
+    <div class="user-card-inside">
+      <p><strong>ID:</strong> {{user.id}} </p>
+      <h2><strong>Name:</strong> {{ user.name }}</h2>
+      <p><strong>Username:</strong> {{ user.username }}</p>
+      <p><strong>Email:</strong> <a> {{ user.email }}</a></p>
+      <p><strong>Phone:</strong> {{ user.phone }}</p>
+      <mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="openEditDialog()">Edit</button>
+        <button mat-raised-button color="warn" (click)="deleteUser(user.id)">Delete</button>
+      </mat-dialog-actions>
+    </div>
+  </mat-card-content>
+</mat-card>
+<br>

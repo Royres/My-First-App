@@ -1,0 +1,15 @@
+a:link, a:visited {
+  text-decoration: none;
+  color: white;/* Убирает подчеркивание для ссылок внутри компонента */
+}
+
+.home-page-text {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.go-to-users-page-button {
+  text-align: center;
+}

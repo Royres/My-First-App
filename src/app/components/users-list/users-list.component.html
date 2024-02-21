@@ -1,0 +1,18 @@
+<title>Users page</title>
+<div class="users-page-text"><span> Users page </span></div>
+
+<div class="buttons">
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary"><a routerLink=""> <=== Back to homepage</a></button>
+    <button class="users-add" mat-raised-button color="primary" (click)="openCreateDialog()">Create User</button>
+  </mat-dialog-actions>
+</div>
+
+<div class="cards-list">
+  <ng-container >
+    <users-card *ngFor="let user of users$ | async"
+                [user]="user"
+                (removeUser)="removeUser($event)">
+    </users-card>
+  </ng-container>
+</div>
