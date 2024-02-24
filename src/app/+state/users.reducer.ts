@@ -12,13 +12,13 @@ import {
 
 export const USERS_FEATURE_KEY = 'users';
 
-export interface userState {
+export interface UserState {
   users: User[];
   loading: boolean;
   error: any;
 }
 
-export const initialState: userState = {
+export const initialState: UserState = {
   users: [],
   loading: false,
   error: null,

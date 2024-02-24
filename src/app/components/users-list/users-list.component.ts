@@ -31,7 +31,7 @@ export class UsersListComponent implements OnInit{
   }
 
   addUser(newUser: User) {
-    this.store.dispatch(addUser({newUser: newUser}));
+    this.store.dispatch(addUser({ newUser }));
   }
 
   openCreateDialog() {

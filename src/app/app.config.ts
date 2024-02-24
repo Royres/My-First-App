@@ -4,7 +4,7 @@ import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from "@angular/common/http";
 import { provideAnimations } from "@angular/platform-browser/animations";
-import { environment } from "../environments/environment.dev";
+import { environment } from "../environments/environment";
 import { API_URL } from "./http/api-url.token";
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from "@ngrx/effects";
@@ -17,13 +17,19 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideAnimations(),
-    { provide: API_URL, useValue: environment.api_url },
+    {
+      provide: API_URL,
+      useValue: environment.api_url
+    },
     provideHttpClient(withFetch()),
     provideStore({
       [USERS_FEATURE_KEY]: reducer,
     }),
     provideEffects(UsersEffect),
-    { provide: USERS_FEATURE_KEY, useValue: 'users' },
+    {
+      provide: USERS_FEATURE_KEY,
+      useValue: 'users'
+    },
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),

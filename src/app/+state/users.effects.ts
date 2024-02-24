@@ -16,14 +16,12 @@ import {
   editUserFailure
 } from "./users.actions";
 import { UsersApiService } from "../services/users-api.service";
-import { UsersService } from "../services/users.service";
 import { of } from "rxjs";
 
 @Injectable()
 export class UsersEffect {
   constructor(
     private actions$: Actions,
-    private usersService: UsersService,
     private usersApiService: UsersApiService
   ) {}
 
@@ -43,8 +41,8 @@ export class UsersEffect {
     this.actions$.pipe(
       ofType(addUser),
       mergeMap(({newUser})=>
-        this.usersService.createUser(newUser).pipe(
-          map((user)=>addUserSuccess({newUser: user})),
+        this.usersApiService.addUser(newUser).pipe(
+          map((user)=>addUserSuccess({newUser})),
           catchError((error)=>of(addUserFailure({error})))
         )
       )
@@ -55,7 +53,7 @@ export class UsersEffect {
     this.actions$.pipe(
       ofType(deleteUser),
       switchMap(({id})=>
-        this.usersService.deleteUser(id).pipe(
+        this.usersApiService.deleteUser(id).pipe(
           map(()=>deleteUserSuccess({id})),
           catchError(error => of(deleteUserFailure({ error })))
         )
@@ -67,7 +65,7 @@ export class UsersEffect {
     this.actions$.pipe(
       ofType(editUser),
       switchMap(({editedUser})=>
-        this.usersService.editUser(editedUser).pipe(
+        this.usersApiService.editUser(editedUser).pipe(
           map(()=>editUserSuccess({editedUser})),
           catchError(error => of(editUserFailure({ error })))
         )

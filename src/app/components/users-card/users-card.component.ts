@@ -4,7 +4,7 @@ import { MatCard, MatCardContent } from "@angular/material/card";
 import { MatButton } from "@angular/material/button";
 import { MatDialogActions } from "@angular/material/dialog";
 import { UsersModalService } from "../../services/users-modal.service";
-import { tap } from "rxjs";
+import {take, tap} from "rxjs";
 import { Store } from "@ngrx/store";
 import { editUser } from "../../+state/users.actions";
 
@@ -32,13 +32,13 @@ export class UsersCardComponent {
 
   openEditDialog() {
     this.usersModalService.openDialog(this.user)
-      .pipe(
+      .pipe(take(1),
           tap(editedUser => {
             if (!editedUser) {
               return;
             }
             this.store.dispatch(editUser({ editedUser }))})
-      )
+          )
       .subscribe()
   }
 }

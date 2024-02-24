@@ -16,4 +16,16 @@ export class UsersApiService {
   public getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/users`);
   }
+
+  public deleteUser(id: number): Observable<unknown> {
+    return this.http.delete(this.apiUrl + `/users/${id}`);
+  }
+
+  public addUser(user: User): Observable<{ id: number }> {
+    return this.http.post<{ id: number }>(this.apiUrl + '/users', user);
+  }
+
+  public editUser(user: Partial<User>): Observable<User> {
+    return this.http.patch<User>(this.apiUrl + `/users/${user.id}`, user);
+  }
 }
